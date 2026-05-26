@@ -10,7 +10,7 @@ font-family:Arial, sans-serif;
 background:#f6f1ec;
 }
 
-/* ================= HEADER ================= */
+
 
 .main-header{
 width:100%;
@@ -133,7 +133,7 @@ letter-spacing:3px;
 cursor:pointer;
 }
 
-/* ================= RESPONSIVE HEADER ================= */
+
 
 @media(min-width:601px) and (max-width:991px){
 
@@ -210,7 +210,7 @@ letter-spacing:4px;
 }
 }
 
-/* ================= SELECTOR SECTION ================= */
+
 
 .selector-section{
 padding:80px 50px;
@@ -223,7 +223,6 @@ grid-template-columns:repeat(3,1fr);
 gap:25px;
 }
 
-/* CARD */
 .selector-card{
 position:relative;
 
@@ -238,7 +237,7 @@ text-decoration:none;
 box-shadow:0 10px 25px rgba(0,0,0,.08);
 }
 
-/* IMAGE FIX (ən vacib hissə) */
+
 .selector-card img{
 width:100%;
 height:100%;
@@ -310,7 +309,7 @@ left:20px;
 top:40px;
 }
 
-/* ================= RESPONSIVE GRID ================= */
+
 @media (min-width:601px) and (max-width:901px){
 
 .selector-grid{
@@ -319,7 +318,7 @@ gap:20px;
 }
 
 .selector-card{
-height:420px; /* balanslı ölçü */
+height:420px; 
 }
 
 }
@@ -336,7 +335,7 @@ grid-template-columns:1fr;
 padding:40px 20px;
 }
 
-/* mobildə şəkillər tam görünür */
+
 .selector-card{
 height:600px;
 }
