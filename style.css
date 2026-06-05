@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -49,16 +48,31 @@ body {
     font-weight: bold;
 }
 
+
+
 .nav-icons {
     display: flex;
     gap: 20px;
+    align-items: center;
 }
 
+.nav-icons a {
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.nav-icons a:hover {
+    transform: scale(1.2);
+}
+
+
 .nav-icon-img {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
+    transition: filter 0.3s ease;
     filter: brightness(0) invert(1);
 }
+
 
 .menu-icon {
     display: none;
@@ -168,7 +182,8 @@ body {
 /* TEXT - Bütün kartların yazıları bura əsasən mərkəzdə və ALTDADIR */
 .selector-card span {
     position: absolute;
-    bottom: 35px; /* Yuxarıdan aşağıya köçürüldü */
+    bottom: 35px;
+    /* Yuxarıdan aşağıya köçürüldü */
     left: 50%;
     transform: translateX(-50%);
     color: white;
@@ -203,7 +218,7 @@ body {
     margin-bottom: 15px;
 }
 
-.support-container > p.support-text {
+.support-container>p.support-text {
     font-family: Arial, sans-serif;
     font-size: 16px;
     line-height: 1.9;
@@ -263,27 +278,7 @@ body {
     background: #f6f1ec;
 }
 
-/* COMPARE SECTION */
-.compare-section {
-    display: flex;
-    justify-content: center;
-    padding: 60px;
-    background: #f6f1ec;
-}
 
-.compare-box {
-    position: relative;
-    width: 600px;
-    height: 600px;
-    overflow: hidden;
-    border-radius: 20px;
-}
-
-.base-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
 
 /* DOCTOR SECTION */
 .doctor-section {
@@ -315,7 +310,7 @@ body {
     background: #fff;
     padding: 22px;
     border-radius: 18px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
     transition: 0.3s;
 }
 
@@ -407,15 +402,15 @@ body {
     margin-top: 40px;
     font-size: 13px;
     color: #6a6a6a;
-    border-top: 1px solid rgba(0,0,0,0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
     padding-top: 15px;
 }
 
-/* ===================== */
-/* RESPONSIVE DESIGN */
-/* ===================== */
+
+
 
 @media(min-width:601px) and (max-width:991px) {
+
     .left-side,
     .right-side {
         width: 50%;
@@ -425,11 +420,6 @@ body {
     .hero-content h1,
     .hero-content h2 {
         font-size: 38px;
-    }
-
-    .nav-menu,
-    .nav-icons {
-        display: none;
     }
 
     .menu-icon {
@@ -461,10 +451,37 @@ body {
     }
 }
 
-@media(max-width:991px) {
-    .support-grid {
-        grid-template-columns: repeat(2, 1fr);
+@media (max-width: 991px) {
+
+    .nav-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 250px;
+        height: 100vh;
+        background: rgba(35, 35, 35, 0.97);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
+        z-index: 999;
     }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+    }
+
+
+
+
 }
 
 @media(max-width:600px) {
@@ -525,7 +542,8 @@ body {
 
     .selector-card span {
         font-size: 20px;
-        bottom: 25px; /* Mobildə də alta çəkildi */
+        bottom: 25px;
+        /* Mobildə də alta çəkildi */
     }
 
     .support-grid {
@@ -554,3 +572,137 @@ body {
     }
 }
 
+
+
+/* serch */
+#search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(30, 30, 30, 0.98);
+    z-index: 9999999;
+    display: none; /* JS aktiv edəndə flex olur */
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
+    overflow-y: auto;
+}
+
+#search-overlay.active {
+    display: flex;
+}
+
+/* Konteyner və Başlıq */
+.search-container {
+    width: 500px;
+    position: relative;
+}
+
+.search-title {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 4px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* Input və Clear düyməsi */
+.search-input-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search-input-field {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 24px;
+    width: 100%;
+    padding: 10px 0;
+    outline: none;
+}
+
+.clear-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: -50px;
+}
+
+/* Nəticələr */
+.search-results {
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+
+.result-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    cursor: pointer;
+    color: white;
+    transition: opacity 0.3s;
+}
+
+.result-item:hover {
+    opacity: 0.8;
+}
+
+.result-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 20px;
+}
+
+.result-text h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.result-text p {
+    margin: 4px 0 0 0;
+    font-size: 12px;
+    color: #999;
+}
+
+/* Düymələr və digər */
+.view-all-btn {
+    margin-top: 20px;
+    background: none;
+    border: 1px solid white;
+    color: white;
+    padding: 12px;
+    width: 100%;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.no-result {
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.result-item img {
+    width: 80px;      
+    height: 80px;     
+    min-width: 80px;  
+    object-fit: contain; 
+    background-color: #ffffff; 
+    padding: 5px; 
+    border-radius: 4px;
+    margin-right: 20px;
+    display: block;
+}

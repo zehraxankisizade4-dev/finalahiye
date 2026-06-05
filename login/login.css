@@ -1,0 +1,122 @@
+/* Səhifənin mərkəzlənməsi üçün */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9; 
+}
+
+/* Formanın dizaynı */
+#loginForm {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 300px;
+}
+
+/* Inputların dizaynı */
+input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #000; 
+}
+
+
+button {
+    padding: 12px;
+    background-color:  #a67c3b;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #333; 
+}
+
+small {
+    margin-top: -10px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+input:invalid {
+    border-color: #ffcccc;
+}
+
+/* Password ipucu üçün yeni CSS */
+.password-hint {
+    color: #666;
+    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    display: block;
+    line-height: 1.4; 
+}
+
+
+
+#loginForm h2 {
+    margin: 0 0 10px 0;
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+}
+
+
+
+
+@media (min-width: 601px) and (max-width: 991px) {
+    #loginForm {
+        width: 450px; 
+        padding: 40px;
+        gap: 20px;
+    }
+    
+    input, button {
+        padding: 15px;
+        font-size: 16px;
+    }
+}
+
+
+@media (max-width: 600px) {
+    body {
+        padding: 0 15px; /
+    }
+
+    #loginForm {
+        width: 100%; 
+        max-width: 350px; 
+        padding: 25px;
+        gap: 12px;
+    }
+
+    input, button {
+        padding: 14px;
+        font-size: 16px; 
+    }
+    
+    h2 {
+        font-size: 20px;
+        margin-top: 0;
+    }
+}

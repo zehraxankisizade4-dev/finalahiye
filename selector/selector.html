@@ -1,41 +1,91 @@
 <!DOCTYPE html>
-<html lang="az">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Products - ÉLORIA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="selector.css">
 </head>
 
 <body>
 
-  <div style="padding: 20px; max-width: 1200px; margin: 0 auto;">
-    <a href="../index.html" style="text-decoration: none; color: #b99d76; font-weight: bold;">← ANA SƏHİFƏ</a>
+  <div class="back-to-home-container">
+    <a href="../index.html" class="home-link">← BACK TO HOME</a>
+    <div class="nav-icons">
+      <button id="search-trigger" style="background:none; border:none; cursor:pointer;">
+        <img src="../images/search-line.png" class="nav-icon-img" alt="Search">
+      </button>
+      <button id="login-trigger" style="background:none; border:none; cursor:pointer;">
+        <img src="../images/user-line.png" class="nav-icon-img" alt="Login">
+      </button>
+      <a href="#"><img src="../images/poker-hearts-line.png" class="nav-icon-img" alt="Wishlist"></a>
+      <a href="#"><img src="../images/shopping-Bag.png" class="nav-icon-img" alt="Cart"></a>
+    </div>
   </div>
 
-  <h1 id="page-title" style="text-align:center; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px;">
-    Products</h1>
+  <h1 id="page-title">OUR PRODUCTS</h1>
 
-  <div style="text-align: center; margin-bottom: 40px;" class="category-buttons">
-    <button class="cat-btn" onclick="filterCategory('all')">Hamısı</button>
+  <div class="category-buttons">
+    <button class="cat-btn" onclick="filterCategory('all')">ALL</button>
     <button class="cat-btn" onclick="filterCategory('cleanser')">CLEANSER</button>
     <button class="cat-btn" onclick="filterCategory('toner')">TONER</button>
     <button class="cat-btn" onclick="filterCategory('serum')">SERUM</button>
     <button class="cat-btn" onclick="filterCategory('moisturizer')">MOISTURIZER</button>
     <button class="cat-btn" onclick="filterCategory('spf')">SPF</button>
-    <button class="cat-btn" onclick="filterCategory('self-care')">self-care</button>
-    <button class="cat-btn" onclick="filterCategory('mask-care')">mask</button>
-    <button class="cat-btn" onclick="filterCategory('hair-care')">hair-care</button>
-    <button class="cat-btn" onclick="filterCategory('body-care')">body-care</button>
+    <button class="cat-btn" onclick="filterCategory('self-care')">SELF-CARE</button>
+    <button class="cat-btn" onclick="filterCategory('mask-care')">MASK</button>
+    <button class="cat-btn" onclick="filterCategory('hair-care')">HAIR-CARE</button>
+    <button class="cat-btn" onclick="filterCategory('body-care')">BODY-CARE</button>
   </div>
 
-  <div id="products" class="grid"
-    style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+  <div id="products" class="products-grid"></div>
+
+  <div id="product-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="modal-body"></div>
+    </div>
   </div>
 
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-box">
+        <h3>ABOUT US</h3>
+        <p>Premium skincare brand focused on gentle, effective and dermatologist-approved formulas.</p>
+      </div>
+      <div class="footer-box">
+        <h3>QUICK LINKS</h3>
+        <a href="#">Home</a>
+        <a href="#">Products</a>
+        <a href="#">Doctors</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-box">
+        <h3>SUPPORT</h3>
+        <a href="#">FAQ</a>
+        <a href="#">Shipping</a>
+        <a href="#">Returns</a>
+      </div>
+      <div class="footer-box">
+        <h3>CONTACT</h3>
+        <p>Email: <a style="display:inline-block;" href="mailto:info@skincare.com">info@skincare.com</a></p>
+        <p>Phone: +994 50 000 00 00</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 ÉLORIA. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
   <script src="selector.js"></script>
+
 </body>
 
 </html>

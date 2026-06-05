@@ -402,7 +402,7 @@
     },
     {
       "id": 41,
-      "name": "Beauty of Joseon Sunscreen Rice + Probiotics",
+      "name": "Beauty of Joseon Spf Cream",
       "brand": "Beauty of Joseon",
       "origin": "Korea",
       "category": "spf",
@@ -412,7 +412,7 @@
     },
     {
       "id": 42,
-      "name": "Skin1004 Madagascar Centella Hyalu-Cica Water-Fit Sun Serum",
+      "name": "Skin1004 Spf Cream",
       "brand": "Skin1004",
       "origin": "Korea",
       "category": "spf",
@@ -422,7 +422,7 @@
     },
     {
       "id": 43,
-      "name": "Round Lab Birch Juice Moisturizing Sun Cream",
+      "name": "Round Lab Spf Cream",
       "brand": "Round Lab",
       "origin": "Korea",
       "category": "spf",
@@ -432,7 +432,7 @@
     },
     {
       "id": 44,
-      "name": "Isntree Hyaluronic Acid Watery Sun Gel",
+      "name": "Isntree Spf Cream",
       "brand": "Isntree",
       "origin": "Korea",
       "category": "spf",
@@ -442,7 +442,7 @@
     },
     {
       "id": 45,
-      "name": "COSRX Aloe Soothing Sun Cream",
+      "name": "COSRX Spf Cream",
       "brand": "COSRX",
       "origin": "Korea",
       "category": "spf",
@@ -452,7 +452,7 @@
     },
     {
       "id": 46,
-      "name": "Torriden Dive In Mild Sun Cream",
+      "name": "Torriden Spf Cream",
       "brand": "Torriden",
       "origin": "Korea",
       "category": "spf",
@@ -462,7 +462,7 @@
     },
     {
       "id": 47,
-      "name": "Anua Heartleaf Silky Moisture Sun Cream",
+      "name": "Anua Spf Cream",
       "brand": "Anua",
       "origin": "Korea",
       "category": "spf",
@@ -472,7 +472,7 @@
     },
     {
       "id": 48,
-      "name": "Purito Daily Soft Touch Sunscreen",
+      "name": "Purito Spf Cream",
       "brand": "Purito",
       "origin": "Korea",
       "category": "spf",
@@ -482,7 +482,7 @@
     },
     {
       "id": 49,
-      "name": "Axis-Y Complete No-Stress Physical Sunscreen",
+      "name": "Axis-Y Spf Cream ",
       "brand": "Axis-Y",
       "origin": "Korea",
       "category": "spf",
@@ -492,7 +492,7 @@
     },
     {
       "id": 50,
-      "name": "Missha All Around Safe Block Soft Finish Sun Milk",
+      "name": "Missha Spf Cream",
       "brand": "Missha",
       "origin": "Korea",
       "category": "spf",
@@ -607,7 +607,7 @@
       "origin": "Korea",
       "category": "mask-care",
       "price": 25,
-      "image": "image/beauty-mask.jpg",
+      "image": "image/beauty-maska.jpg",
       "stock": 16
     },
     {
@@ -662,7 +662,7 @@
     },
     {
       "id": 67,
-      "name": "Anua Sheet Mask 7",
+      "name": "Anua Sheet Mask ",
       "brand": "Anua",
       "origin": "Korea",
       "category": "mask-care",
@@ -672,7 +672,7 @@
     },
     {
       "id": 68,
-      "name": "Purito Sheet Mask 8",
+      "name": "Purito Sheet Mask ",
       "brand": "Purito",
       "origin": "Korea",
       "category": "mask-care",
@@ -682,7 +682,7 @@
     },
     {
       "id": 69,
-      "name": "Axis-Y Sheet Mask 9",
+      "name": "Axis-Y Sheet Mask ",
       "brand": "Axis-Y",
       "origin": "Korea",
       "category": "mask-care",
@@ -692,7 +692,7 @@
     },
     {
       "id": 70,
-      "name": "Missha Sheet Mask 10",
+      "name": "Missha Sheet Mask ",
       "brand": "Missha",
       "origin": "Korea",
       "category": "mask-care",
@@ -702,7 +702,7 @@
     },
     {
       "id": 71,
-      "name": "Beauty of Joseon Body Lotion ",
+      "name": "Beauty of Joseon Body Lotion Body ",
       "brand": "Beauty of Joseon",
       "origin": "Korea",
       "category": "body-care",
@@ -712,7 +712,7 @@
     },
     {
       "id": 72,
-      "name": "Skin1004 Body Lotion ",
+      "name": "Skin1004 Body Lotion Body",
       "brand": "Skin1004",
       "origin": "Korea",
       "category": "body-care",
@@ -722,7 +722,7 @@
     },
     {
       "id": 73,
-      "name": "Round Lab Body Lotion ",
+      "name": "Round Lab Body Lotion Body",
       "brand": "Round Lab",
       "origin": "Korea",
       "category": "body-care",
@@ -732,7 +732,7 @@
     },
     {
       "id": 74,
-      "name": "Isntree Body Lotion ",
+      "name": "Isntree Body Lotion Body ",
       "brand": "Isntree",
       "origin": "Korea",
       "category": "body-care",
@@ -742,7 +742,7 @@
     },
     {
       "id": 75,
-      "name": "COSRX Body Lotion ",
+      "name": "COSRX Body Lotion Body",
       "brand": "COSRX",
       "origin": "Korea",
       "category": "body-care",
@@ -752,17 +752,17 @@
     },
     {
       "id": 76,
-      "name": "Torriden Body Lotion ",
+      "name": "Torriden Body Lotion Body",
       "brand": "Torriden",
       "origin": "Korea",
       "category": "body-care",
       "price": 25,
-      "image": "image/toriden-wash.jpeg",
+      "image": "image/toriden-wash.jpg",
       "stock": 25
     },
     {
       "id": 77,
-      "name": "Anua Body Lotion 7",
+      "name": "Anua Body Lotion Body",
       "brand": "Anua",
       "origin": "Korea",
       "category": "body-care",
@@ -772,7 +772,7 @@
     },
     {
       "id": 78,
-      "name": "Purito Body Lotion 8",
+      "name": "Purito Body Lotion Body",
       "brand": "Purito",
       "origin": "Korea",
       "category": "body-care",
@@ -782,7 +782,7 @@
     },
     {
       "id": 79,
-      "name": "Axis-Y Body Lotion 9",
+      "name": "Axis-Y Body Lotion Body",
       "brand": "Axis-Y",
       "origin": "Korea",
       "category": "body-care",
@@ -792,16 +792,17 @@
     },
     {
       "id": 80,
-      "name": "Missha Body Lotion 10",
+      "name": "Missha Body Lotion Body",
       "brand": "Missha",
       "origin": "Korea",
       "category": "body-care",
       "price": 20,
       "image": "image/softfinish-wash.jpg",
       "stock": 10
-    },{
+    },
+    {
       "id": 81,
-      "name": "Beauty of Joseon Body Lotion ",
+      "name": "Beauty of Joseon Body Lotion Hair ",
       "brand": "Beauty of Joseon",
       "origin": "Korea",
       "category": "hair-care",
@@ -811,7 +812,7 @@
     },
     {
       "id": 82,
-      "name": "Skin1004 Body Lotion ",
+      "name": "Skin1004 Body Lotion Hair ",
       "brand": "Skin1004",
       "origin": "Korea",
       "category": "hair-care",
@@ -821,17 +822,17 @@
     },
     {
       "id": 83,
-      "name": "Round Lab Body Lotion ",
+      "name": "Round Lab Body Lotion Hair",
       "brand": "Round Lab",
       "origin": "Korea",
-      "category": "body-care",
+      "category": "hair-care",
       "price": 22,
       "image": "image/raund-hair.jpg",
       "stock": 29
     },
     {
       "id": 84,
-      "name": "Isntree Body Lotion ",
+      "name": "Isntree Body Lotion Hair ",
       "brand": "Isntree",
       "origin": "Korea",
       "category": "hair-care",
@@ -841,7 +842,7 @@
     },
     {
       "id": 85,
-      "name": "COSRX Body Lotion ",
+      "name": "COSRX Body Lotion Hair",
       "brand": "COSRX",
       "origin": "Korea",
       "category": "hair-care",
@@ -851,17 +852,17 @@
     },
     {
       "id": 86,
-      "name": "Torriden Body Lotion ",
+      "name": "Torriden Body Lotion Hair ",
       "brand": "Torriden",
       "origin": "Korea",
       "category": "hair-care",
       "price": 25,
-      "image": "image/torriden-hair.jpeg",
+      "image": "image/torriden-hair.jpg",
       "stock": 25
     },
     {
       "id": 87,
-      "name": "Anua Body Lotion 7",
+      "name": "Anua Body Lotion Hair",
       "brand": "Anua",
       "origin": "Korea",
       "category": "hair-care",
@@ -871,7 +872,7 @@
     },
     {
       "id": 88,
-      "name": "Purito Body Lotion 8",
+      "name": "Purito Body Lotion Hair",
       "brand": "Purito",
       "origin": "Korea",
       "category": "hair-care",
@@ -881,7 +882,7 @@
     },
     {
       "id": 89,
-      "name": "Axis-Y Body Lotion 9",
+      "name": "Axis-Y Body Lotion Hair",
       "brand": "Axis-Y",
       "origin": "Korea",
       "category": "hair-care",
@@ -891,7 +892,7 @@
     },
     {
       "id": 90,
-      "name": "Missha Body Lotion 10",
+      "name": "Missha Body Lotion Hair",
       "brand": "Missha",
       "origin": "Korea",
       "category": "hair-care",
