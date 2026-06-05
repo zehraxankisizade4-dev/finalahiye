@@ -1,4 +1,4 @@
-/* ===== BASE ===== */
+
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: #fcfbfa;
@@ -8,7 +8,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* ===== HEADER ===== */
+
 .back-to-home-container {
     display: flex;
     justify-content: space-between;
@@ -38,48 +38,7 @@ body {
     opacity: 1;
 }
 
-/* ===== NAV ICONS ===== */
-.nav-icons {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 20px;
-}
-
-.nav-icons a,
-.nav-icons button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-}
-
-.nav-icons a:hover,
-.nav-icons button:hover {
-    transform: scale(1.15);
-}
-
-.nav-icon-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    filter: invert(68%) sepia(30%) saturate(661%) hue-rotate(2deg) brightness(92%) contrast(88%);
-    transition: all 0.3s ease;
-}
-
-.nav-icons a:hover .nav-icon-img,
-.nav-icons button:hover .nav-icon-img {
-    filter: invert(50%) sepia(40%) saturate(700%) hue-rotate(0deg) brightness(95%) contrast(90%);
-}
-
-/* ===== PAGE TITLE ===== */
+/* 3. PAGE TITLE */
 #page-title {
     font-family: 'Cormorant Garamond', serif;
     text-align: center;
@@ -92,7 +51,7 @@ body {
     color: #1a1a1a;
 }
 
-/* ===== CATEGORY BUTTONS ===== */
+/* 4. CATEGORY BUTTONS */
 .category-buttons {
     display: flex;
     justify-content: center;
@@ -125,7 +84,7 @@ body {
     background-color: #b99d76;
 }
 
-/* ===== PRODUCTS GRID ===== */
+/* 5. PRODUCTS GRID */
 .products-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -135,7 +94,7 @@ body {
     padding: 0 40px;
 }
 
-/* ===== PRODUCT CARD ===== */
+/* 6. PRODUCT CARD */
 .product-card {
     background: #ffffff;
     border: 1px solid #f2eee9;
@@ -193,6 +152,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 20px;
@@ -255,7 +215,7 @@ body {
     color: #fff;
 }
 
-/* ===== MODAL ===== */
+/* 7. MODAL */
 .modal {
     display: none;
     position: fixed;
@@ -270,7 +230,6 @@ body {
     opacity: 0;
     transition: opacity 0.3s ease;
     padding: 20px;
-    box-sizing: border-box;
 }
 
 .modal.show {
@@ -288,7 +247,7 @@ body {
     overflow-y: auto;
 }
 
-.close-modal {
+.modal-close {
     position: absolute;
     top: 15px;
     right: 20px;
@@ -296,9 +255,11 @@ body {
     cursor: pointer;
     color: #666;
     transition: all 0.3s ease;
+    border: none;
+    background: none;
 }
 
-.close-modal:hover {
+.modal-close:hover {
     color: #1a1a1a;
 }
 
@@ -328,9 +289,6 @@ body {
 .modal-right {
     flex: 1;
     min-width: 280px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
 }
 
 .modal-brand {
@@ -361,12 +319,14 @@ body {
     font-size: 13px;
     color: #333;
     margin: 15px 0;
+  
 }
 
 .stock-status {
     font-weight: 600;
     color: #c5221f;
 }
+
 
 .modal-description {
     font-size: 14px;
@@ -389,8 +349,8 @@ body {
     background: #fff;
     cursor: pointer;
     font-size: 16px;
-    font-weight: 600;
     transition: all 0.3s ease;
+    font-weight: 600;
 }
 
 .quantity-selector button:hover {
@@ -408,11 +368,20 @@ body {
     font-weight: 600;
 }
 
+/* Modalın sağ tərəfində elementləri alt-alta düzür */
+.modal-right {
+    flex: 1;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+}
+
+/* Düymənin səliqəli görünüşü */
 .add-to-cart-big {
-    width: 100%;
-    padding: 12px 0;
     background: #b99d76;
     color: #1a1a1a;
+    padding: 12px 0; 
     border: 2px solid #b99d76;
     cursor: pointer;
     text-transform: uppercase;
@@ -420,17 +389,54 @@ body {
     letter-spacing: 1px;
     font-family: 'Montserrat', sans-serif;
     font-size: 13px;
-    margin-top: 20px;
-    display: block;
-    box-sizing: border-box;
+    transition: all 0.3s ease;
+    width: 100%;       
+    margin-top: 20px;  
+    display: block;    
+    box-sizing: border-box; 
     transition: all 0.3s ease;
 }
 
 .add-to-cart-big:hover {
-    border-color: #1a1a1a;
+    border-color: #1a1a1a; /* Border qara */
+    cursor: pointer;
 }
 
-/* ===== FOOTER ===== */
+/* 8. NAV ICONS */
+.nav-icons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.nav-icons a:hover {
+    transform: scale(1.15);
+}
+
+.nav-icon-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: invert(68%) sepia(30%) saturate(661%) hue-rotate(2deg) brightness(92%) contrast(88%);
+    transition: all 0.3s ease;
+}
+
+.nav-icons a:hover .nav-icon-img {
+    filter: invert(50%) sepia(40%) saturate(700%) hue-rotate(0deg) brightness(95%) contrast(90%);
+}
+
+/* 9. FOOTER */
 .footer {
     background: linear-gradient(135deg, #f6f1ec, #e7d3a3);
     color: #2b2b2b;
@@ -483,8 +489,8 @@ body {
     text-decoration: none;
     font-size: 14px;
     margin-bottom: 10px;
-    font-weight: 500;
     transition: all 0.3s ease;
+    font-weight: 500;
 }
 
 .footer-box a:hover {
@@ -501,105 +507,49 @@ body {
     padding-top: 15px;
 }
 
-/* ===== MEDIA QUERIES ===== */
-@media (max-width: 1199px) {
-    .products-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 40px 30px;
-    }
-}
-
-@media (max-width: 1024px) {
-    .footer-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-    }
-}
-
-@media (max-width: 991px) {
-    .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px 20px;
-        padding: 0 20px;
-    }
-
-    .back-to-home-container {
-        padding: 20px;
-    }
-
-    .modal-body {
-        gap: 20px;
-    }
-}
-
+/* --- 1. MOBİL (375px - 600px) --- */
 @media (max-width: 600px) {
-    .products-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        padding: 0 15px;
-    }
+    .products-grid { grid-template-columns: 1fr; gap: 30px; padding: 0 15px; }
+    .footer-container { grid-template-columns: 1fr; text-align: center; }
+    .modal-body { flex-direction: column; }
+    .nav-icons { gap: 15px; }
+    .nav-icon-img { width: 20px; height: 20px; }
+    .footer { padding: 40px 15px 15px; }
+    /* Digər mobil ölçülər... */
+}
 
-    .back-to-home-container {
-        padding: 15px;
-        flex-wrap: wrap;
-        gap: 10px;
+/* --- 2. TABLET / KİÇİK NƏZARƏT (601px - 991px) --- */
+@media (min-width: 601px) and (max-width: 991px) {
+    .products-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 30px 20px; 
+        padding: 0 20px; 
     }
-
-    .home-link {
-        font-size: 11px;
-        letter-spacing: 2px;
+    .footer-container { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 30px; 
     }
+}
 
-    .nav-icons {
-        gap: 15px;
+/* --- 3. NOUTBUK / KİÇİK EKRANLAR (992px - 1199px) --- */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .products-grid { 
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 40px 30px; 
     }
-
-    .nav-icon-img {
-        width: 20px;
-        height: 20px;
+    .footer-container { 
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 40px; 
     }
+}
 
-    #page-title {
-        font-size: 2rem;
-        margin-bottom: 20px;
+/* --- 4. GENİŞ EKRANLAR (1200px və yuxarısı) --- */
+@media (min-width: 1200px) {
+    .products-grid { 
+        grid-template-columns: repeat(4, 1fr); /* Əgər 4 sütun istəyirsənsə */
+        gap: 50px 40px; 
     }
-
-    .product-image-container {
-        height: 200px;
-    }
-
-    .modal-content {
-        padding: 20px;
-    }
-
-    .modal-body {
-        flex-direction: column;
-    }
-
-    .modal-left,
-    .modal-right {
-        min-width: 100%;
-    }
-
-    .modal-title {
-        font-size: 20px;
-    }
-
-    .footer-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 30px;
-    }
-
-    .footer-box h3::after {
-        margin: 8px auto 0;
-    }
-
-    .footer-box a {
-        margin: 8px 0;
-    }
-
-    .footer {
-        padding: 40px 15px 15px;
+    .footer-container { 
+        grid-template-columns: repeat(4, 1fr); 
     }
 }

@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <h2 class="search-title">WHAT ARE YOU LOOKING FOR?</h2>
                 <div class="search-input-wrapper">
                     <input type="text" class="search-input-field" placeholder="Start typing...">
-                    <button class="clear-btn">Clear</button>
+                    <button class="clear-btn">Delete</button>
                 </div>
                 <div class="search-results"></div>
             </div>
@@ -32,19 +32,43 @@ document.addEventListener("DOMContentLoaded", () => {
         overlay.classList.remove('active');
     });
 
-    input.addEventListener('input', async (e) => {
-        const term = e.target.value.trim().toLowerCase();
-        container.innerHTML = '';
-        if (term.length > 0) {
+   input.addEventListener('input', async (e) => {
+    const term = e.target.value.trim().toLowerCase();
+    container.innerHTML = '';
+
+    // Şəkil yolunu tənzimləyən köməkçi funksiya (axtarış daxilində)
+    const getSearchImagePath = (path) => {
+        const isSelectorPage = window.location.pathname.includes('selector.html');
+        // Əgər artıq ../ ilə başlayırsa olduğu kimi saxla
+        if (path.startsWith('../')) return path;
+        // Selector səhifəsindəyiksə və şəkil kökdədirsə, ../ əlavə et
+        return isSelectorPage ? `../${path}` : path;
+    };
+
+    if (term.length > 0) {
+        try {
             const res = await fetch("http://localhost:3000/products");
             const data = await res.json();
             const list = Array.isArray(data) ? data : (data.products || []);
-            const filtered = list.filter(p => p.name.toLowerCase().includes(term) || (p.brand && p.brand.toLowerCase().includes(term)));
+            
+            const filtered = list.filter(p => 
+                p.name.toLowerCase().includes(term) || 
+                (p.brand && p.brand.toLowerCase().includes(term))
+            );
 
             filtered.slice(0, 5).forEach(item => {
                 const div = document.createElement('div');
                 div.className = 'result-item';
-                div.innerHTML = `<img src="${item.image}"><div><h3>${item.name.toUpperCase()}</h3><p>${item.price} AZN</p></div>`;
+                
+                // Yenilənmiş şəkil yolu istifadə olunur
+                div.innerHTML = `
+                    <img src="${getSearchImagePath(item.image)}" alt="${item.name}">
+                    <div>
+                        <h3>${item.name.toUpperCase()}</h3>
+                        <p>${item.price} AZN</p>
+                    </div>
+                `;
+
                 div.addEventListener('click', () => {
                     overlay.classList.remove('active');
                     // Səhifəyə görə düzgün keçid
@@ -56,8 +80,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
                 container.appendChild(div);
             });
+        } catch (error) {
+            console.error("Axtarışda xəta:", error);
         }
-    });
+    }
+});
 
     // --- 2. LOGIN MƏNTİQİ (Hər yerdən keçid) ---
     const loginTrigger = document.getElementById('login-trigger');
@@ -71,5 +98,45 @@ document.addEventListener("DOMContentLoaded", () => {
                 window.location.href = 'login/login.html';
             }
         });
+    }
+});
+
+
+// --- ÜMUMİ KLİK HADİSƏLƏRİ ---
+document.addEventListener('click', function(e) {
+    
+    // 1. ÜRƏK DÜYMƏSİ (Bəyənmə və Keçid)
+    const heartBtn = e.target.closest('.heart-btn');
+    if (heartBtn) {
+        e.preventDefault();
+        
+        const productCard = heartBtn.closest('.product-card');
+        if (!productCard) return;
+
+        const productId = productCard.id.replace('product-', '');
+        const product = allProducts.find(p => p.id == productId);
+
+        if (product) {
+            let lineItems = JSON.parse(localStorage.getItem('lineItems')) || [];
+            
+            // Əgər artıq siyahıdadırsa, sil (toggle məntiqi)
+            const index = lineItems.findIndex(item => item.id == product.id);
+            if (index > -1) {
+                lineItems.splice(index, 1);
+            } else {
+                lineItems.push(product);
+            }
+            localStorage.setItem('lineItems', JSON.stringify(lineItems));
+        }
+
+        // Keçid: Səhifənin kökündən line/line.html-ə keçid
+        window.location.href = 'line/line.html'; 
+        return;
+    }
+
+    // 2. HEADER-DƏKİ LINE DÜYMƏSİ
+    const lineBtn = e.target.closest('.go-to-line');
+    if (lineBtn) {
+        window.location.href = 'line/line.html';
     }
 });

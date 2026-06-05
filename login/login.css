@@ -84,23 +84,10 @@ input:invalid {
 
 
 
-@media (min-width: 601px) and (max-width: 991px) {
-    #loginForm {
-        width: 450px; 
-        padding: 40px;
-        gap: 20px;
-    }
-    
-    input, button {
-        padding: 15px;
-        font-size: 16px;
-    }
-}
-
-
+/* --- 1. MOBİL (375px - 600px) --- */
 @media (max-width: 600px) {
     body {
-        padding: 0 15px; /
+        padding: 0 15px;
     }
 
     #loginForm {
@@ -110,13 +97,44 @@ input:invalid {
         gap: 12px;
     }
 
-    input, button {
+    #loginForm input, 
+    #loginForm button {
         padding: 14px;
         font-size: 16px; 
     }
     
-    h2 {
+    #loginForm h2 {
         font-size: 20px;
         margin-top: 0;
+    }
+}
+
+/* --- 2. TABLET (601px - 991px) --- */
+@media (min-width: 601px) and (max-width: 991px) {
+    #loginForm {
+        width: 450px; 
+        padding: 40px;
+        gap: 20px;
+    }
+    
+    #loginForm input, 
+    #loginForm button {
+        padding: 15px;
+        font-size: 16px;
+    }
+}
+
+/* --- 3. DESKTOP (992px və yuxarısı) --- */
+@media (min-width: 992px) {
+    #loginForm {
+        width: 500px; /* Desktopda bir az daha geniş və rahat */
+        padding: 50px;
+        gap: 25px;
+    }
+    
+    #loginForm input, 
+    #loginForm button {
+        padding: 18px;
+        font-size: 16px;
     }
 }

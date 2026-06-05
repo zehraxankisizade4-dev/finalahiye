@@ -1,6 +1,15 @@
 const API_URL = "http://localhost:3000/products";
 let allProducts = [];
 
+// Köməkçi funksiya: Şəkil yolunu avtomatik təyin edir
+function getImagePath(imagePath) {
+    const isSelectorPage = window.location.pathname.includes('selector.html');
+    // Əgər artıq ../ ilə başlayırsa olduğu kimi qaytar
+    if (imagePath.startsWith('../')) return imagePath;
+    // Selector səhifəsindəyiksə və şəkil kökdədirsə, ../ əlavə et
+    return isSelectorPage ? `../${imagePath}` : imagePath;
+}
+
 window.addEventListener("DOMContentLoaded", () => {
     fetchProducts();
     setupLoginTrigger();
@@ -40,7 +49,7 @@ function displayProducts(productsList) {
         const productCard = `
             <div class="product-card" id="product-${product.id}">
                 <div class="product-image-container">
-                    <img src="../${product.image}" alt="${product.name}" class="product-img">
+                    <img src="${getImagePath(product.image)}" alt="${product.name}" class="product-img">
                     <div class="product-action-icons">
                         <button class="action-icon quick-view-btn" data-product-id="${product.id}">
                             <i class="fa-regular fa-eye"></i>
@@ -68,6 +77,8 @@ function filterCategory(categoryName) {
     const pageTitle = document.getElementById("page-title");
     updateActiveButton(categoryName);
 
+    if (!pageTitle) return; // Əgər element yoxdursa xəta verməsin
+
     if (!categoryName || categoryName === 'all') {
         pageTitle.innerText = "OUR PRODUCTS";
         displayProducts(allProducts);
@@ -83,7 +94,8 @@ function filterCategory(categoryName) {
 function updateActiveButton(categoryName) {
     const buttons = document.querySelectorAll('.cat-btn');
     buttons.forEach(btn => {
-        if (btn.getAttribute('onclick').includes(`'${categoryName}'`)) {
+        const onclick = btn.getAttribute('onclick') || '';
+        if (onclick.includes(`'${categoryName}'`)) {
             btn.classList.add('active');
         } else {
             btn.classList.remove('active');
@@ -113,7 +125,7 @@ function openProductModal(productId) {
 
     modalBody.innerHTML = `
         <div class="modal-left">
-            <img src="../${product.image}" alt="${product.name}">
+            <img src="${getImagePath(product.image)}" alt="${product.name}">
         </div>
         <div class="modal-right">
             <h4 class="modal-brand">${product.brand || product.category}</h4>
@@ -150,6 +162,7 @@ function openProductModal(productId) {
 
 function changeQty(val) {
     let qtySpan = document.getElementById('qty-val');
+    if (!qtySpan) return;
     let current = parseInt(qtySpan.innerText);
     if (current + val >= 1) {
         qtySpan.innerText = current + val;
@@ -158,7 +171,7 @@ function changeQty(val) {
 
 function closeModal() {
     const modal = document.getElementById('product-modal');
-    modal.classList.remove('show');
+    if (modal) modal.classList.remove('show');
 }
 
 function setupURLParams() {
@@ -176,46 +189,83 @@ function setupURLParams() {
         }
     }
 
-    if (category && typeof filterCategory === 'function') {
+    if (category) {
         filterCategory(category);
-        document.querySelectorAll('.cat-btn').forEach(btn => {
-            btn.classList.remove('active');
-            if (btn.getAttribute('onclick')?.includes(category)) {
-                btn.classList.add('active');
-            }
-        });
         highlightProduct();
     } else if (productId) {
         highlightProduct();
     }
 }
 
-function setupOverlayNavigation(div, overlay, item) {
-    div.addEventListener('click', () => {
-        overlay.classList.remove('active');
 
-        const currentPath = window.location.pathname;
 
-        if (currentPath.includes('selector.html')) {
-            window.location.href = `selector.html?id=${item.id}&cat=${item.category}`;
-        } else {
-            window.location.href = `selector/selector.html?id=${item.id}&cat=${item.category}`;
-        }
-    });
-}
 
+// --- LOGIN FUNKSİYASI ---
 function setupLoginTrigger() {
     const loginTrigger = document.getElementById('login-trigger');
     if (!loginTrigger) return;
 
-    loginTrigger.addEventListener('click', () => {
+    loginTrigger.addEventListener('click', (e) => {
         if (localStorage.getItem('user')) {
-            alert("You are already logged in!");
+            console.log("İstifadəçi artıq daxil olub.");
+            return;
         } else {
             const isInSelector = window.location.pathname.includes('selector.html');
-            window.location.href = isInSelector
-                ? '../login/login.html'
-                : 'login/login.html';
+            window.location.href = isInSelector ? '../login/login.html' : 'login/login.html';
         }
     });
 }
+ 
+
+// --- ÜMUMİ CLICK HADİSƏLƏRİ ---
+document.addEventListener('click', function(e) {
+    
+    // 1. ÜRƏK İKONU (Line-a əlavə etmə, rəng dəyişmə və keçid)
+    const heartBtn = e.target.closest('.action-icon');
+    
+    if (heartBtn && heartBtn.querySelector('.fa-heart')) {
+        e.preventDefault();
+        
+        const icon = heartBtn.querySelector('.fa-heart');
+        const productCard = heartBtn.closest('.product-card');
+        
+        if (productCard) {
+            const productId = productCard.id.replace('product-', '');
+            const product = allProducts.find(p => p.id == productId);
+
+            if (product) {
+                let lineItems = JSON.parse(localStorage.getItem('lineItems')) || [];
+                const index = lineItems.findIndex(item => item.id == product.id);
+                
+                if (index > -1) {
+                    // Əgər artıq bəyənilibsə, siyahıdan sil
+                    lineItems.splice(index, 1);
+                    icon.classList.remove('liked');
+                } else {
+                    // Əgər bəyənilməyibsə, əlavə et
+                    lineItems.push(product);
+                    icon.classList.add('liked');
+                }
+                localStorage.setItem('lineItems', JSON.stringify(lineItems));
+            }
+        }
+        
+        // İndi bu sətir aktivdir: Ürəyə basan kimi line səhifəsinə gedəcək
+        window.location.href = '../line/line.html'; 
+        return; 
+    }
+
+    // 2. LINE-A GEDİŞ DÜYMƏLƏRİ (Header və s. üçün)
+    const lineBtn = e.target.closest('.go-to-line');
+    if (lineBtn) {
+        window.location.href = '../line/line.html';
+    }
+});
+
+// --- SƏHİFƏ YÜKLƏNƏNDƏ ÇAĞIRILANLAR ---
+window.addEventListener("DOMContentLoaded", () => {
+    fetchProducts();
+    setupLoginTrigger();
+    setupURLParams();
+});
+
