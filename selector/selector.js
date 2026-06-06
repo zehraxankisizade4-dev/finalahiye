@@ -29,9 +29,9 @@ async function fetchProducts() {
     try {
         const response = await fetch(API_URL);
         const data = await response.json();
-
-        allProducts = data.product;
-
+        console.log(data)
+        allProducts = data.products;
+        console.log(allProducts);
         const params = new URLSearchParams(window.location.search);
         const category = params.get("type");
 
