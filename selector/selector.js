@@ -1,12 +1,9 @@
-const API_URL = "http://localhost:3000/products";
+const API_URL = "https://raw.githubusercontent.com/zehraxankisizade4-dev/finalahiye/refs/heads/main/db.json";
 let allProducts = [];
 
-// Köməkçi funksiya: Şəkil yolunu avtomatik təyin edir
 function getImagePath(imagePath) {
     const isSelectorPage = window.location.pathname.includes('selector.html');
-    // Əgər artıq ../ ilə başlayırsa olduğu kimi qaytar
     if (imagePath.startsWith('../')) return imagePath;
-    // Selector səhifəsindəyiksə və şəkil kökdədirsə, ../ əlavə et
     return isSelectorPage ? `../${imagePath}` : imagePath;
 }
 
@@ -14,70 +11,84 @@ window.addEventListener("DOMContentLoaded", () => {
     fetchProducts();
     setupLoginTrigger();
     setupURLParams();
+    setupCategoryButtons();
 });
 
-function fetchProducts() {
-    fetch(API_URL)
-        .then(response => response.json())
-        .then(data => {
-            allProducts = data;
+function setupCategoryButtons() {
+    const buttons = document.querySelectorAll(".cat-btn");
 
-            const urlParams = new URLSearchParams(window.location.search);
-            const categoryParam = urlParams.get('type');
-
-            if (categoryParam) {
-                filterCategory(categoryParam);
-            } else {
-                displayProducts(allProducts);
-                updateActiveButton('all');
-            }
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            document.getElementById("products").innerHTML = `
-                <p style='grid-column: 1/-1; text-align:center;'>
-                    Products could not be loaded.
-                </p>`;
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            const category = button.dataset.category;
+            filterCategory(category);
         });
+    });
 }
 
+async function fetchProducts() {
+    try {
+        const response = await fetch(API_URL);
+        const data = await response.json();
+
+        allProducts = data.product;
+
+        const params = new URLSearchParams(window.location.search);
+        const category = params.get("type");
+
+        if (category) {
+            filterCategory(category);
+        } else {
+            displayProducts(allProducts);
+            updateActiveButton("all");
+        }
+
+    } catch (error) {
+        console.log(error);
+
+        document.getElementById("products").innerHTML = `
+            <p style="grid-column:1/-1;text-align:center;">
+                Products could not be loaded.
+            </p>
+        `;
+    }
+}
 function displayProducts(productsList) {
     const productsContainer = document.getElementById("products");
-    productsContainer.innerHTML = "";
 
-    productsList.forEach(product => {
-        const productCard = `
-            <div class="product-card" id="product-${product.id}">
-                <div class="product-image-container">
-                    <img src="${getImagePath(product.image)}" alt="${product.name}" class="product-img">
-                    <div class="product-action-icons">
-                        <button class="action-icon quick-view-btn" data-product-id="${product.id}">
-                            <i class="fa-regular fa-eye"></i>
-                        </button>
-                        <button class="action-icon">
-                            <i class="fa-regular fa-heart"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="product-info">
-                    <h4 class="product-brand">${product.brand || product.category}</h4>
-                    <h3 class="product-name">${product.name}</h3>
-                    <p class="product-price">${product.price} AZN</p>
-                    <button class="add-to-cart-btn" data-product-id="${product.id}">
-                        + ADD TO CART
+    productsContainer.innerHTML = productsList.map(product => `
+        <div class="product-card" id="product-${product.id}">
+            <div class="product-image-container">
+                <img src="${getImagePath(product.image)}" alt="${product.name}" class="product-img">
+
+                <div class="product-action-icons">
+                    <button class="action-icon quick-view-btn" data-product-id="${product.id}">
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+
+                    <button class="action-icon">
+                        <i class="fa-regular fa-heart"></i>
                     </button>
                 </div>
             </div>
-        `;
-        productsContainer.innerHTML += productCard;
-    });
+
+            <div class="product-info">
+                <h4 class="product-brand">${product.brand || product.category}</h4>
+                <h3 class="product-name">${product.name}</h3>
+                <p class="product-price">${product.price} AZN</p>
+
+                <button class="add-to-cart-btn" data-product-id="${product.id}">
+                    + ADD TO CART
+                </button>
+            </div>
+        </div>
+    `).join("");
 }
 
 function filterCategory(categoryName) {
     const pageTitle = document.getElementById("page-title");
     updateActiveButton(categoryName);
 
-    if (!pageTitle) return; // Əgər element yoxdursa xəta verməsin
+    if (!pageTitle) return;
 
     if (!categoryName || categoryName === 'all') {
         pageTitle.innerText = "OUR PRODUCTS";
@@ -92,10 +103,9 @@ function filterCategory(categoryName) {
 }
 
 function updateActiveButton(categoryName) {
-    const buttons = document.querySelectorAll('.cat-btn');
-    buttons.forEach(btn => {
-        const onclick = btn.getAttribute('onclick') || '';
-        if (onclick.includes(`'${categoryName}'`)) {
+    document.querySelectorAll('.cat-btn').forEach(btn => {
+        const cat = btn.getAttribute('data-category');
+        if (cat === categoryName) {
             btn.classList.add('active');
         } else {
             btn.classList.remove('active');
@@ -197,15 +207,11 @@ function setupURLParams() {
     }
 }
 
-
-
-
-// --- LOGIN FUNKSİYASI ---
 function setupLoginTrigger() {
     const loginTrigger = document.getElementById('login-trigger');
     if (!loginTrigger) return;
 
-    loginTrigger.addEventListener('click', (e) => {
+    loginTrigger.addEventListener('click', () => {
         if (localStorage.getItem('user')) {
             console.log("İstifadəçi artıq daxil olub.");
             return;
@@ -215,20 +221,16 @@ function setupLoginTrigger() {
         }
     });
 }
- 
 
-// --- ÜMUMİ CLICK HADİSƏLƏRİ ---
-document.addEventListener('click', function(e) {
-    
-    // 1. ÜRƏK İKONU (Line-a əlavə etmə, rəng dəyişmə və keçid)
+document.addEventListener('click', function (e) {
     const heartBtn = e.target.closest('.action-icon');
-    
+
     if (heartBtn && heartBtn.querySelector('.fa-heart')) {
         e.preventDefault();
-        
+
         const icon = heartBtn.querySelector('.fa-heart');
         const productCard = heartBtn.closest('.product-card');
-        
+
         if (productCard) {
             const productId = productCard.id.replace('product-', '');
             const product = allProducts.find(p => p.id == productId);
@@ -236,36 +238,24 @@ document.addEventListener('click', function(e) {
             if (product) {
                 let lineItems = JSON.parse(localStorage.getItem('lineItems')) || [];
                 const index = lineItems.findIndex(item => item.id == product.id);
-                
+
                 if (index > -1) {
-                    // Əgər artıq bəyənilibsə, siyahıdan sil
                     lineItems.splice(index, 1);
                     icon.classList.remove('liked');
                 } else {
-                    // Əgər bəyənilməyibsə, əlavə et
                     lineItems.push(product);
                     icon.classList.add('liked');
                 }
                 localStorage.setItem('lineItems', JSON.stringify(lineItems));
             }
         }
-        
-        // İndi bu sətir aktivdir: Ürəyə basan kimi line səhifəsinə gedəcək
-        window.location.href = '../line/line.html'; 
-        return; 
+
+        window.location.href = '../line/line.html';
+        return;
     }
 
-    // 2. LINE-A GEDİŞ DÜYMƏLƏRİ (Header və s. üçün)
     const lineBtn = e.target.closest('.go-to-line');
     if (lineBtn) {
         window.location.href = '../line/line.html';
     }
 });
-
-// --- SƏHİFƏ YÜKLƏNƏNDƏ ÇAĞIRILANLAR ---
-window.addEventListener("DOMContentLoaded", () => {
-    fetchProducts();
-    setupLoginTrigger();
-    setupURLParams();
-});
-

@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="product-info">
                     <h3>${product.brand || product.category}</h3>
                     <h4>${product.name}</h4>
-                    <p>Qiymət: ${product.price} AZN</p>
+                  <p class="price-text">Qiymət:  ${product.price} AZN</p>
                     <p><strong>Stock:</strong> ${product.stock} left in stock</p>
                     <button onclick="removeFromLine(${index})" style="background:none; border:none; cursor:pointer; font-size:18px; color:red; position:absolute; top:10px; right:10px;">&times;</button>
                     <button class="add-to-cart-btn" onclick="addToCart(${product.id})"> + ADD TO CART</button>

@@ -6,6 +6,8 @@ body {
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
+
+    
 }
 
 
@@ -507,6 +509,27 @@ body {
     padding-top: 15px;
 }
 
+/* Modal içindeki miktar seçici butonları için stil */
+.qty-btn {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #ddd;
+    background: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.qty-btn:hover {
+    border-color: #b99d76;
+    color: #b99d76;
+}
+
+
+
+
+
 /* --- 1. MOBİL (375px - 600px) --- */
 @media (max-width: 600px) {
     .products-grid { grid-template-columns: 1fr; gap: 30px; padding: 0 15px; }
@@ -517,6 +540,7 @@ body {
     .footer { padding: 40px 15px 15px; }
     /* Digər mobil ölçülər... */
 }
+
 
 /* --- 2. TABLET / KİÇİK NƏZARƏT (601px - 991px) --- */
 @media (min-width: 601px) and (max-width: 991px) {

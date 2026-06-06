@@ -1,194 +1,131 @@
-/* --- ÜMUMİ SƏHİFƏ --- */
+
 body {
-    margin: 0;
-    padding: 0;
-   font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: #f9f7f2;
     color: #333;
+    margin: 0;
+    padding: 20px;
 }
 
-/* --- YUXARI PANEL --- */
+
 .header-container {
     display: flex;
-    justify-content: flex-start; /* Hər şeyi sola yığır */
     align-items: center;
-    padding: 30px 50px;
-    background: #fff;
-    border-bottom: 1px solid #e0d8c3;
-    position: relative; /* Başlığı ortalamaq üçün lazımdır */
+    justify-content: space-between;
+    padding: 20px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .back-link {
-    margin-right: auto; /* Bu, yazını tam sola yapışdırır */
-    color: #c5a059;
     text-decoration: none;
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-
-.page-title {
-    position: absolute; /* Başlığı konteynerin tam mərkəzinə qoyur */
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 24px;
-    text-transform: uppercase;
-    margin: 0;
-}
-
-/* --- MƏHSUL QUTULARI (LİSTƏ) --- */
-#line-container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* 'x' düyməsi üçün kartı tənzimləyirik */
-.product-card {
-    position: relative; /* 'x'-i kartın sağ küncünə yapışdırmaq üçün */
-    background: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    border: 1px solid #f0ece2;
+    color: #c5a47e;
+    /* Sarı/Qızılı rəng */
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 2px;
     display: flex;
     align-items: center;
-    gap: 40px;
-    margin-bottom: 25px;
+
 }
 
-/* Şəkil */
-.product-card img {
-    width: 200px; 
-    height: 200px;
-    object-fit: contain;
-    flex-shrink: 0;
+
+
+
+.back-link:hover {
+    color: #000;
+
 }
 
-/* Mətnlər bloku (Sağ tərəf) */
-.product-info {
+.page-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#line-container {
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+.product-card {
     display: flex;
-    flex-direction: column; /* Yazıları alt-alta yığır */
-    gap: 8px;               /* Yazılar arası məsafə */
-    align-items: flex-start; 
-    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    background: #fff;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    position: relative;
+    gap: 30px;
 }
 
-.product-info h3 { font-size: 13px; color: #888; text-transform: uppercase; margin: 0; }
-.product-info h4 { font-size: 24px; color: #000; margin: 0; }
-.product-info p { font-size: 16px; margin: 0; }
-.product-info strong { color: #d9534f; }
+.product-card img {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    border-radius: 8px;
+    background-color: #fdfdfd;
+}
 
-/* Düymələr */
-.add-to-cart-btn {
-    background: #000;
-    color: #fff;
-    border: none;
-    padding: 12px 30px;
-    margin-top: 10px;
-    cursor: pointer;
+.product-info {
+    flex: 1;
+}
+
+
+.price-text {
+    color: #c5a47e;
     font-weight: bold;
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.product-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    color: #888;
     text-transform: uppercase;
+    margin: 0 0 5px 0;
+}
+
+.product-info h4 {
+    font-size: 18px;
+    margin: 0 0 10px 0;
+}
+
+.add-to-cart-btn {
+    background-color: #c5a47e;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 15px;
     transition: 0.3s;
 }
 
 .add-to-cart-btn:hover {
-    background: #333;
-}
-
-/* --- SİL DÜYMƏSİ (x) --- */
-button[onclick*="removeFromLine"] {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 24px;       /* 'x' işarəsinin ölçüsü */
-    color: #999;           /* Rəng */
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    text-decoration: none; /* Alt xətti ləğv edir */
-    padding: 0;
-    line-height: 1;
-}
-
-button[onclick*="removeFromLine"]:hover {
-    color: #000;           /* Hover edəndə qaralır */
+    background-color: #a38563;
 }
 
 
-
-/* Başlıqlar üçün Cormorant Garamond */
-.page-title, .product-info h4 {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 600; /* Daha gözəl görünür */
-    color: #333;
-}
-
-.product-info h3 {
-    font-family: 'Montserrat', sans-serif; /* Brand adı üçün Montserrat */
-    font-size: 11px;
-    letter-spacing: 2px;
-}
-
-
-
-
-/* --- 1. TABLET (601px - 991px) --- */
-@media (max-width: 991px) {
-    #line-container {
-        max-width: 700px;
-    }
-    
-    .product-card {
-        padding: 20px;
-        gap: 20px;
-    }
-
-    .product-card img {
-        width: 150px;
-        height: 150px;
-    }
-}
-
-/* --- 2. MOBİL (600px və aşağısı) --- */
-@media (max-width: 600px) {
+@media (max-width: 601px) {
     .header-container {
-        grid-template-columns: 1fr; /* Başlıq və geri düyməsi üst-üstə */
-        gap: 15px;
-        padding: 20px;
-        text-align: center;
+        padding: 10px;
+        flex-direction: column;
     }
 
     .page-title {
-        grid-column: 1; /* Ortadan sola çəkir */
-        font-size: 20px;
+        position: static;
+        transform: none;
+        margin-bottom: 20px;
     }
 
     .product-card {
-        flex-direction: column; /* Şəkil və məlumat alt-alta */
+        flex-direction: column;
         text-align: center;
-        padding: 20px 15px;
-    }
-
-    .product-info {
-        align-items: center; /* Mobil üçün ortalayırıq */
-    }
-
-    .product-card img {
-        width: 180px;
-        height: 180px;
-    }
-
-    .add-to-cart-btn {
-        width: 100%; /* Mobil düymə genişlənir */
-        padding: 15px;
-    }
-    
-    /* Sil düyməsini mobildə bir az daha əlçatan edirik */
-    button[onclick*="removeFromLine"] {
-        top: 10px;
-        right: 15px;
-        font-size: 28px;
     }
 }
