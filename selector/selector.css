@@ -530,50 +530,66 @@ body {
 
 
 
-/* --- 1. MOBİL (375px - 600px) --- */
-@media (max-width: 600px) {
-    .products-grid { grid-template-columns: 1fr; gap: 30px; padding: 0 15px; }
-    .footer-container { grid-template-columns: 1fr; text-align: center; }
-    .modal-body { flex-direction: column; }
-    .nav-icons { gap: 15px; }
-    .nav-icon-img { width: 20px; height: 20px; }
-    .footer { padding: 40px 15px 15px; }
-    /* Digər mobil ölçülər... */
+/* MOBILE */
+@media (min-width: 375px) and (max-width: 600px) {
+
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 0 15px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 25px;
+    }
+
+    .modal-body {
+        flex-direction: column;
+    }
+
+    .nav-icons {
+        gap: 12px;
+    }
+
+    .nav-icon-img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .footer {
+        padding: 40px 15px 15px;
+    }
 }
 
 
-/* --- 2. TABLET / KİÇİK NƏZARƏT (601px - 991px) --- */
+/* TABLET */
 @media (min-width: 601px) and (max-width: 991px) {
-    .products-grid { 
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 30px 20px; 
-        padding: 0 20px; 
+
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px 20px;
+        padding: 0 20px;
     }
-    .footer-container { 
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 30px; 
+
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
     }
 }
 
-/* --- 3. NOUTBUK / KİÇİK EKRANLAR (992px - 1199px) --- */
-@media (min-width: 992px) and (max-width: 1199px) {
-    .products-grid { 
-        grid-template-columns: repeat(3, 1fr); 
-        gap: 40px 30px; 
-    }
-    .footer-container { 
-        grid-template-columns: repeat(3, 1fr); 
-        gap: 40px; 
-    }
-}
 
-/* --- 4. GENİŞ EKRANLAR (1200px və yuxarısı) --- */
-@media (min-width: 1200px) {
-    .products-grid { 
-        grid-template-columns: repeat(4, 1fr); /* Əgər 4 sütun istəyirsənsə */
-        gap: 50px 40px; 
+/* DESKTOP */
+@media (min-width: 992px) and (max-width: 2000px) {
+
+    .products-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px 30px;
     }
-    .footer-container { 
-        grid-template-columns: repeat(4, 1fr); 
+
+    .footer-container {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
     }
 }

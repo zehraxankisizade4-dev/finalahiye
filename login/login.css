@@ -127,7 +127,7 @@ input:invalid {
 /* --- 3. DESKTOP (992px və yuxarısı) --- */
 @media (min-width: 992px) {
     #loginForm {
-        width: 500px; /* Desktopda bir az daha geniş və rahat */
+        width: 500px; 
         padding: 50px;
         gap: 25px;
     }
