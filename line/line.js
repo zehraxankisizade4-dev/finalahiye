@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!container) return; // Əgər element yoxdursa kodu dayandır
 
     if (lineItems.length === 0) {
-        container.innerHTML = "<p style='text-align:center;'>Siyahınız boşdur.</p>";
+        container.innerHTML = "<p style='text-align:center;'>Your list is empty</p>";
     } else {
         container.innerHTML = lineItems.map((product, index) => `
             <div class="product-card">
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="product-info">
                     <h3>${product.brand || product.category}</h3>
                     <h4>${product.name}</h4>
-                  <p class="price-text">Qiymət:  ${product.price} AZN</p>
+                  <p class="price-text">Qiymət:  ${product.price} $</p>
                     <p><strong>Stock:</strong> ${product.stock} left in stock</p>
                     <button onclick="removeFromLine(${index})" style="background:none; border:none; cursor:pointer; font-size:18px; color:red; position:absolute; top:10px; right:10px;">&times;</button>
                     <button class="add-to-cart-btn" onclick="addToCart(${product.id})"> + ADD TO CART</button>

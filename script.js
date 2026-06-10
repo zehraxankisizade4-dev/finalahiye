@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
     // --- 1. SEARCH LOGIC ---
 
     // Create search overlay if it doesn't exist

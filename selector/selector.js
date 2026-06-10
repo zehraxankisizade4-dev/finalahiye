@@ -52,6 +52,8 @@ async function fetchProducts() {
         `;
     }
 }
+
+
 function displayProducts(productsList) {
     const productsContainer = document.getElementById("products");
 
@@ -74,7 +76,7 @@ function displayProducts(productsList) {
             <div class="product-info">
                 <h4 class="product-brand">${product.brand || product.category}</h4>
                 <h3 class="product-name">${product.name}</h3>
-                <p class="product-price">${product.price} AZN</p>
+                <p class="product-price">${product.price} $</p>
 
                 <button class="add-to-cart-btn" data-product-id="${product.id}">
                     + ADD TO CART
@@ -140,7 +142,7 @@ function openProductModal(productId) {
         <div class="modal-right">
             <h4 class="modal-brand">${product.brand || product.category}</h4>
             <h2 class="modal-name">${product.name}</h2>
-            <p class="modal-price">${product.price} AZN</p>
+            <p class="modal-price">${product.price} $</p>
             
             <div class="quantity-selector">
                 <button onclick="changeQty(-1)">-</button>

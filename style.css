@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
  
-html
+html,
 body {
     overflow-x: hidden;
 }
@@ -423,7 +423,6 @@ body {
 .search-container {
     width: 90%;
     max-width: 500px;
-
     position: relative;
 }
  
